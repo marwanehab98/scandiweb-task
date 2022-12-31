@@ -29,7 +29,8 @@ export default function ProductsList() {
         });
     }
 
-    const handleDelete = () => {
+    const handleDelete = (event) => {
+        event.preventDefault();
         selected.forEach(SKU => {
             deleteHelper(SKU);
         });
@@ -71,8 +72,8 @@ export default function ProductsList() {
                 <Container>
                     <Navbar.Brand>Product List</Navbar.Brand>
                     <Nav variant="pills" activeKey="1" className="me-auto">
-                        <Nav.Link style={{"marginLeft":"20px", "marginRight":"20px"}} eventKey="1" href='/addProduct'>ADD</Nav.Link>
-                        <Button style={{"marginLeft":"20px"}} id='delete-product-btn' onClick={handleDelete}>MASS DELETE</Button>
+                        <Nav.Link style={{ "marginLeft": "20px", "marginRight": "20px" }} eventKey="1" href='/addProduct'>ADD</Nav.Link>
+                        <Button style={{ "marginLeft": "20px" }} id='delete-product-btn' onClick={handleDelete}>MASS DELETE</Button>
                     </Nav>
                 </Container>
             </Navbar>
