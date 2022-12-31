@@ -98,7 +98,7 @@ function CreateProduct() {
     }
 
     return (
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Form id='product_form' noValidate validated={validated} onSubmit={handleSubmit}>
             <Navbar bg="light" variant="light">
                 <Container>
                     <Navbar.Brand>Product Add</Navbar.Brand>
@@ -110,9 +110,10 @@ function CreateProduct() {
                     </Nav>
                 </Container>
             </Navbar>
-            <Form.Group className="mb-3" controlId="SKU">
+            <Form.Group className="mb-3" controlId="sku">
                 <Form.Label>SKU</Form.Label>
                 <Form.Control
+                    id='sku'
                     required
                     className="productDataEntry"
                     placeholder="Enter SKU"
@@ -127,6 +128,7 @@ function CreateProduct() {
             <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                    id='name'
                     required
                     className="productDataEntry"
                     placeholder="Enter Product Name"
@@ -141,6 +143,7 @@ function CreateProduct() {
             <Form.Group className="mb-3" controlId="price">
                 <Form.Label>Price ($)</Form.Label>
                 <Form.Control
+                    id='price'
                     required
                     // type='number'
                     // step={0.01}
@@ -154,9 +157,9 @@ function CreateProduct() {
                     }}
                 />
             </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3" controlId='productType'>
                 <Form.Label>Type Swithcer</Form.Label>
-                <Form.Select onChange={(e) => handleTypeChange(e)}>
+                <Form.Select id='productType' onChange={(e) => handleTypeChange(e)}>
                     <option>Book</option>
                     <option>DVD</option>
                     <option>Furniture</option>
