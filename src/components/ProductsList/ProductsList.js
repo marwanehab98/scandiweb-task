@@ -72,7 +72,7 @@ export default function ProductsList() {
                     <Navbar.Brand>Product List</Navbar.Brand>
                     <Nav variant="pills" activeKey="1" className="me-auto">
                         <Nav.Link eventKey="1" href='/addProduct'>Add Product</Nav.Link>
-                        <button id='delete-product-btn' onClick={handleDelete}>MASS DELETE</button>
+                        <Button id='delete-product-btn' onClick={handleDelete}>MASS DELETE</Button>
                     </Nav>
                 </Container>
             </Navbar>
