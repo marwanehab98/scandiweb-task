@@ -6,6 +6,7 @@ function DVDComponent(props) {
         <Form.Group className="mb-3" controlId="#size">
             <Form.Label>Size (MB)</Form.Label>
             <Form.Control
+            
                 id='#size'
                 required
                 // type='number'
