@@ -71,7 +71,7 @@ export default function ProductsList() {
                 <Container>
                     <Navbar.Brand>Product List</Navbar.Brand>
                     <Nav variant="pills" activeKey="1" className="me-auto">
-                        <Nav.Link eventKey="1" href='/addProduct'>Add Product</Nav.Link>
+                        <Nav.Link eventKey="1" href='/addProduct'>ADD</Nav.Link>
                         <Button id='delete-product-btn' onClick={handleDelete}>MASS DELETE</Button>
                     </Nav>
                 </Container>
