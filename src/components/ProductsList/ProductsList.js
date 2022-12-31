@@ -4,7 +4,7 @@ import './ProductsList.css';
 import Product from '../Product/Product';
 // import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
-import { Navbar, Container, Nav, Col, Row } from 'react-bootstrap';
+import { Navbar, Container, Nav, Col, Row, Button } from 'react-bootstrap';
 
 
 export default function ProductsList() {
@@ -67,12 +67,12 @@ export default function ProductsList() {
 
     return (
         <>
-            <Navbar bg="light" variant="light">
+            <Navbar bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand>Product List</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href='/addProduct'>Add Product</Nav.Link>
-                        <Nav.Link id='delete-product-btn' onClick={handleDelete}>Mass Delete</Nav.Link>
+                    <Nav variant="pills" activeKey="1" className="me-auto">
+                        <Nav.Link eventKey="1" href='/addProduct'>Add Product</Nav.Link>
+                        <Button variant="danger" id='delete-product-btn' onClick={handleDelete}>Mass Delete</Button>
                     </Nav>
                 </Container>
             </Navbar>
