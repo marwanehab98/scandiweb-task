@@ -43,7 +43,8 @@ export default function ProductsList() {
         axios.delete('http://localhost/scandiweb-task/server/index.php/' + SKU + '/delete').then(function (response) {
             console.log(response.data);
             tempSelected = tempSelected.filter(product => {
-                return product !== SKU;
+                // eslint-disable-next-line eqeqeq
+                return product != SKU;
             });
             setSelected(tempSelected);
             getProducts();
