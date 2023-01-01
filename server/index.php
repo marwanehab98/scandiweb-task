@@ -2,6 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Max-Age: 86400');
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 

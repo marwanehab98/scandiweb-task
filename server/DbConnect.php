@@ -4,14 +4,14 @@
  */
 class DbConnect
 {
-	private $server = 'https://databases.000webhost.com';
-	private $dbname = 'id20087235_scandiweb_task';
-	private $user = 'id20087235_root';
-	private $pass = 'WpG)fM7WHlk%oEOX';
-	// private $server = 'localhost';
-	// private $dbname = 'scandiweb_task';
-	// private $user = 'root';
-	// private $pass = '';
+	// private $server = 'https://databases.000webhost.com';
+	// private $dbname = 'id20087235_scandiweb_task';
+	// private $user = 'id20087235_root';
+	// private $pass = 'WpG)fM7WHlk%oEOX';
+	private $server = 'localhost';
+	private $dbname = 'scandiweb_task';
+	private $user = 'root';
+	private $pass = '';
 
 
 
