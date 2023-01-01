@@ -63,9 +63,9 @@ export default function ProductsList() {
         setSelected(tempSelected);
     };
 
-    if (products.length === 0) {
-        return ([]);
-    }
+    // if (products.length === 0) {
+    //     return ([]);
+    // }
 
     return (
         <>
