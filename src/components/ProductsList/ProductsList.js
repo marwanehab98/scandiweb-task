@@ -24,7 +24,7 @@ export default function ProductsList() {
 
 
     function getProducts() {
-        axios.get('http://localhost/scandiweb-task/server/index.php').then(function (response) {
+        axios.get('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/').then(function (response) {
             setProducts(response.data);
         });
     }
@@ -40,7 +40,7 @@ export default function ProductsList() {
     const deleteHelper = (SKU) => {
         let tempSelected = [];
         Object.assign(tempSelected, selected);
-        axios.delete('http://localhost/scandiweb-task/server/index.php/' + SKU + '/delete').then(function (response) {
+        axios.delete('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/' + SKU + '/delete').then(function (response) {
             console.log(response.data);
             tempSelected = tempSelected.filter(product => {
                 // eslint-disable-next-line eqeqeq

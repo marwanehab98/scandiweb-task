@@ -61,7 +61,7 @@ function CreateProduct() {
                 return true
             });
             if (valid) {
-                axios.post('http://localhost/scandiweb-task/server/index.php/save', product).then(function (response) {
+                axios.post('https://scandiweb-task-marwan-elsheikh.000webhostapp.com//save', product).then(function (response) {
                     console.log(response.data);
                     if (response.data.status === '200') {
                         navigate('/');

@@ -51,17 +51,16 @@ class DVD extends Product
         }
 
         if ($valid) {
-            $sql =
-                "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type)" .
-                "INSERT INTO dvds(SKU, size) VALUES(:SKU, :size)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':SKU', $this->SKU);
-            $stmt->bindParam(':name', $this->name);
-            $stmt->bindParam(':price', $this->price);
-            $stmt->bindParam(':type', $type);
-            $stmt->bindParam(':size', $this->size);
-
             try {
+                $sql =
+                    "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type)" .
+                    "INSERT INTO dvds(SKU, size) VALUES(:SKU, :size)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':SKU', $this->SKU);
+                $stmt->bindParam(':name', $this->name);
+                $stmt->bindParam(':price', $this->price);
+                $stmt->bindParam(':type', $type);
+                $stmt->bindParam(':size', $this->size);
                 $stmt->execute();
                 $response = ['status' => '200', 'message' => 'Record created successfully.'];
             } catch (\Throwable $error) {
@@ -116,17 +115,16 @@ class Book extends Product
             $valid = true;
         }
         if ($valid) {
-            $sql =
-                "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type);" .
-                "INSERT INTO books(SKU, weight) VALUES(:SKU, :weight)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':SKU', $this->SKU);
-            $stmt->bindParam(':name', $this->name);
-            $stmt->bindParam(':price', $this->price);
-            $stmt->bindParam(':type', $type);
-            $stmt->bindParam(':weight', $this->weight);
-
             try {
+                $sql =
+                    "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type);" .
+                    "INSERT INTO books(SKU, weight) VALUES(:SKU, :weight)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':SKU', $this->SKU);
+                $stmt->bindParam(':name', $this->name);
+                $stmt->bindParam(':price', $this->price);
+                $stmt->bindParam(':type', $type);
+                $stmt->bindParam(':weight', $this->weight);
                 $stmt->execute();
                 $response = ['status' => '200', 'message' => 'Record created successfully.'];
             } catch (\Throwable $error) {
@@ -188,19 +186,18 @@ class Furniture extends Product
         }
 
         if ($valid) {
-            $sql =
-                "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type)" .
-                "INSERT INTO furniture(SKU, length, width, height) VALUES(:SKU, :length, :width, :height)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':SKU', $this->SKU);
-            $stmt->bindParam(':name', $this->name);
-            $stmt->bindParam(':price', $this->price);
-            $stmt->bindParam(':type', $type);
-            $stmt->bindParam(':length', $this->length);
-            $stmt->bindParam(':width', $this->width);
-            $stmt->bindParam(':height', $this->height);
-
             try {
+                $sql =
+                    "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type)" .
+                    "INSERT INTO furniture(SKU, length, width, height) VALUES(:SKU, :length, :width, :height)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':SKU', $this->SKU);
+                $stmt->bindParam(':name', $this->name);
+                $stmt->bindParam(':price', $this->price);
+                $stmt->bindParam(':type', $type);
+                $stmt->bindParam(':length', $this->length);
+                $stmt->bindParam(':width', $this->width);
+                $stmt->bindParam(':height', $this->height);
                 $stmt->execute();
                 $response = ['status' => '200', 'message' => 'Record created successfully.'];
             } catch (\Throwable $error) {
@@ -222,14 +219,14 @@ class ProductList
 
     public function getProducts($conn)
     {
-        $sql = "SELECT P.SKU, P.name, P.price, P.type, B.weight, D.size, F.height, F.width, F.length FROM products P
-        LEFT JOIN books B on B.SKU = P.SKU
-        LEFT JOIN dvds D on D.SKU = P.SKU
-        LEFT JOIN furniture F on F.SKU = P.SKU
-        ORDER BY p.SKU";
-        $path = explode('/', $_SERVER['REQUEST_URI']);
-        $stmt = $conn->prepare($sql);
         try {
+            $sql =
+                "SELECT P.SKU, P.name, P.price, P.type, B.weight, D.size, F.height, F.width, F.length FROM products P
+                LEFT JOIN books B on B.SKU = P.SKU
+                LEFT JOIN dvds D on D.SKU = P.SKU
+                LEFT JOIN furniture F on F.SKU = P.SKU
+                ORDER BY P.SKU";
+            $stmt = $conn->prepare($sql);
             $stmt->execute();
             while ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $type = $product['type'];
@@ -246,11 +243,11 @@ class ProductList
 
     public function deleteProduct($conn)
     {
-        $sql = "DELETE FROM products WHERE SKU = :id";
-        $path = explode('/', $_SERVER['REQUEST_URI']);
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $path[4]);
         try {
+            $sql = "DELETE FROM products WHERE SKU = :id";
+            $path = explode('/', $_SERVER['REQUEST_URI']);
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $path[4]);
             $stmt->execute();
             $response = ['status' => '200', 'message' => 'Record deleted successfully.'];
         } catch (\Throwable $error) {

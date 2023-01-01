@@ -23,7 +23,6 @@ switch ($method) {
         $type = $product->type;
         $class = $type;
         $product_object = new $class($product, true);
-        // $products_list = new ProductList();
         $product_object->addProduct($conn, $type);
         break;
     case "DELETE":
