@@ -27,9 +27,11 @@ switch ($method) {
             $class = $type;
             $product_object = new $class($product, true);
             $product_object->addProduct($conn, $type);
-        } else {
+        } else if ($path[1] == "deleteproduct") {
+            $body = json_decode(file_get_contents('php://input'));
+            $sku = $body->SKU;
             $products_list = new ProductList();
-            $products_list->deleteProduct($conn, $path[2]);
+            $products_list->deleteProduct($conn, $sku);
         }
         break;
 }

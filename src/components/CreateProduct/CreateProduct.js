@@ -62,7 +62,7 @@ function CreateProduct() {
             if (valid) {
                 try {
                     // console.log(product)
-                    fetch('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/addproduct', {
+                    fetch(process.env.REACT_APP_ADD_URL, {
                         method: 'post',
                         body: JSON.stringify(product)
                     }).then(function (response) {

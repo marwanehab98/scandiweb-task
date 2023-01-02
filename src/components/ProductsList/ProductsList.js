@@ -22,7 +22,7 @@ export default function ProductsList() {
 
     function getProducts() {
         try {
-            fetch('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/', {
+            fetch(process.env.REACT_APP_BASE_URL, {
                 method: 'get',
             }).then(function (response) {
                 return response.json();
@@ -46,8 +46,9 @@ export default function ProductsList() {
         let tempSelected = [];
         Object.assign(tempSelected, selected);
         try {
-            fetch('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/deleteproduct/' + SKU, {
+            fetch(process.env.REACT_APP_DELETE_URL, {
                 method: 'post',
+                body: JSON.stringify({"SKU": SKU})
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
