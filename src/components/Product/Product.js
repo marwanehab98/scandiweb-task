@@ -49,7 +49,7 @@ function Product(props) {
                     <input
                         id={'checkbox' + props.product.SKU}
                         type="checkbox"
-                        className='.delete-checkbox'
+                        className='delete-checkbox'
                         onChange={(e) => handleCheckbox(e)}></input>
                     {props.product.name.replace(/^\w/, c => c.toUpperCase())}</Card.Header>
                 <Card.Body>
