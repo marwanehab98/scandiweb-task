@@ -3,10 +3,10 @@ import { Form } from 'react-bootstrap';
 
 function DVDComponent(props) {
     return (
-        <Form.Group className="mb-3" controlId="#size">
+        <Form.Group className="mb-3">
             <Form.Label>Size (MB)</Form.Label>
             <Form.Control
-                // id='#size'
+                id='size'
                 required
                 // type='number'
                 // step={0.01}

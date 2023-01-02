@@ -135,10 +135,10 @@ function CreateProduct() {
                     }}
                 />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="#name">
+            <Form.Group className="mb-3">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                    // id='#name'
+                    id='name'
                     required
                     className="productDataEntry"
                     placeholder="Enter Product Name"
@@ -150,10 +150,10 @@ function CreateProduct() {
                     }}
                 />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="#price">
+            <Form.Group className="mb-3">
                 <Form.Label>Price ($)</Form.Label>
                 <Form.Control
-                    // id='#price'
+                    id='price'
                     required
                     // type='number'
                     // step={0.01}
@@ -167,9 +167,9 @@ function CreateProduct() {
                     }}
                 />
             </Form.Group>
-            <Form.Group className="mb-3" controlId='#productType'>
+            <Form.Group className="mb-3">
                 <Form.Label>Type Swithcer</Form.Label>
-                <Form.Select onChange={(e) => handleTypeChange(e)}>
+                <Form.Select id='productType' onChange={(e) => handleTypeChange(e)}>
                     <option>Book</option>
                     <option>DVD</option>
                     <option>Furniture</option>
