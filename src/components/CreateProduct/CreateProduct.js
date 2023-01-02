@@ -120,10 +120,10 @@ function CreateProduct() {
                     </Nav>
                 </Container>
             </Navbar>
-            <Form.Group className="mb-3" controlId="#sku">
+            <Form.Group className="mb-3">
                 <Form.Label>SKU</Form.Label>
                 <Form.Control
-                    // id='#sku'
+                    id='#sku'
                     required
                     className="productDataEntry"
                     placeholder="Enter SKU"
