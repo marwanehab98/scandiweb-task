@@ -53,7 +53,7 @@ class DVD extends Product
         if ($valid) {
             try {
                 $sql =
-                    "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type)" .
+                    "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type);" .
                     "INSERT INTO dvds(SKU, size) VALUES(:SKU, :size)";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':SKU', $this->SKU);
@@ -188,7 +188,7 @@ class Furniture extends Product
         if ($valid) {
             try {
                 $sql =
-                    "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type)" .
+                    "INSERT INTO products(SKU, name, price, type) VALUES(:SKU, :name, :price, :type);" .
                     "INSERT INTO furniture(SKU, length, width, height) VALUES(:SKU, :length, :width, :height)";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':SKU', $this->SKU);
@@ -241,13 +241,12 @@ class ProductList
         }
     }
 
-    public function deleteProduct($conn)
+    public function deleteProduct($conn, $SKU)
     {
         try {
             $sql = "DELETE FROM products WHERE SKU = :id";
-            $path = explode('/', $_SERVER['REQUEST_URI']);
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id', $path[4]);
+            $stmt->bindParam(':id', $SKU);
             $stmt->execute();
             $response = ['status' => '200', 'message' => 'Record deleted successfully.'];
         } catch (\Throwable $error) {

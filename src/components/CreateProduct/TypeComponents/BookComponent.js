@@ -6,7 +6,7 @@ function BookComponent(props) {
         <Form.Group className="mb-3" controlId="#weight">
             <Form.Label>Weight (KG)</Form.Label>
             <Form.Control
-                id='#weight'
+                // id='#weight'
                 required
                 // type='number'
                 // step={0.01}

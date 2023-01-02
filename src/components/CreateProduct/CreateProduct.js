@@ -1,5 +1,4 @@
 import './CreateProduct.css';
-import axios from 'axios';
 import { Navbar, Container, Nav, Form, Button, Modal } from 'react-bootstrap';
 import BookComponent from './TypeComponents/BookComponent';
 import DVDComponent from './TypeComponents/DVDComponent'
@@ -61,16 +60,27 @@ function CreateProduct() {
                 return true
             });
             if (valid) {
-                axios.post('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/', product).then(function (response) {
-                    console.log(response.data);
-                    if (response.data.status === '200') {
-                        navigate('/');
-                    }
-                    else {
-                        setErrorMessage(response.data.message);
-                        handleShow()
-                    }
-                });
+                try {
+                    // console.log(product)
+                    fetch('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/addproduct', {
+                        method: 'post',
+                        body: JSON.stringify(product)
+                    }).then(function (response) {
+                        return response.json();
+                    }).then(function (data) {
+                        console.log(data);
+                        if (data.status === '200') {
+                            navigate('/');
+                        }
+                        else {
+                            setErrorMessage(data.message);
+                            handleShow()
+                        }
+                    });
+                } catch (error) {
+                    alert(error)
+                }
+
             }
             else {
                 handleShow();
@@ -113,7 +123,7 @@ function CreateProduct() {
             <Form.Group className="mb-3" controlId="#sku">
                 <Form.Label>SKU</Form.Label>
                 <Form.Control
-                    id='#sku'
+                    // id='#sku'
                     required
                     className="productDataEntry"
                     placeholder="Enter SKU"
@@ -128,7 +138,7 @@ function CreateProduct() {
             <Form.Group className="mb-3" controlId="#name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                    id='#name'
+                    // id='#name'
                     required
                     className="productDataEntry"
                     placeholder="Enter Product Name"
@@ -143,7 +153,7 @@ function CreateProduct() {
             <Form.Group className="mb-3" controlId="#price">
                 <Form.Label>Price ($)</Form.Label>
                 <Form.Control
-                    id='#price'
+                    // id='#price'
                     required
                     // type='number'
                     // step={0.01}
@@ -159,7 +169,7 @@ function CreateProduct() {
             </Form.Group>
             <Form.Group className="mb-3" controlId='#productType'>
                 <Form.Label>Type Swithcer</Form.Label>
-                <Form.Select id='#productType' onChange={(e) => handleTypeChange(e)}>
+                <Form.Select onChange={(e) => handleTypeChange(e)}>
                     <option>Book</option>
                     <option>DVD</option>
                     <option>Furniture</option>

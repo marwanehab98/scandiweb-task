@@ -40,13 +40,14 @@ function Product(props) {
         <>
             <Card
                 bg={"light"}
-                key={"Light"}
+                key={"Card" + props.product.SKU}
                 text={"dark"}
                 style={{ width: '18rem' }}
                 className="mb-2"
             >
                 <Card.Header>
                     <input
+                        id={'checkbox' + props.product.SKU}
                         type="checkbox"
                         className='.delete-checkbox'
                         onChange={(e) => handleCheckbox(e)}></input>

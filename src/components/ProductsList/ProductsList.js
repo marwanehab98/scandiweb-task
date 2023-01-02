@@ -1,9 +1,6 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './ProductsList.css';
 import Product from '../Product/Product';
-// import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
 import { Navbar, Container, Nav, Col, Row, Button } from 'react-bootstrap';
 
 
@@ -24,9 +21,18 @@ export default function ProductsList() {
 
 
     function getProducts() {
-        axios.get('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/').then(function (response) {
-            setProducts(response.data);
-        });
+        try {
+            fetch('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/', {
+                method: 'get',
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                // console.log(data);
+                setProducts(data);
+            });
+        } catch (error) {
+            alert(error);
+        }
     }
 
     const handleDelete = (event) => {
@@ -34,21 +40,30 @@ export default function ProductsList() {
         selected.forEach(SKU => {
             deleteHelper(SKU);
         });
-        // handleSelection({});
     }
 
     const deleteHelper = (SKU) => {
         let tempSelected = [];
         Object.assign(tempSelected, selected);
-        axios.delete('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/' + SKU + '/delete').then(function (response) {
-            console.log(response.data);
-            tempSelected = tempSelected.filter(product => {
-                // eslint-disable-next-line eqeqeq
-                return product != SKU;
+        try {
+            fetch('https://scandiweb-task-marwan-elsheikh.000webhostapp.com/deleteproduct/' + SKU, {
+                method: 'post',
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+                if (data.status === '200') {
+                    tempSelected = tempSelected.filter(product => {
+                        // eslint-disable-next-line eqeqeq
+                        return product != SKU;
+                    })
+                    setSelected(tempSelected);
+                    getProducts();
+                }
             });
-            setSelected(tempSelected);
-            getProducts();
-        });
+        } catch (error) {
+            alert(error);
+        }
     }
 
 
@@ -62,10 +77,6 @@ export default function ProductsList() {
             });
         setSelected(tempSelected);
     };
-
-    // if (products.length === 0) {
-    //     return ([]);
-    // }
 
     return (
         <>

@@ -7,7 +7,7 @@ function FurnitureComponent(props) {
             <Form.Group className="mb-3" controlId="#length">
                 <Form.Label>Length (CM)</Form.Label>
                 <Form.Control
-                    id='#length'
+                    // id='#length'
                     required
                     // type='number'
                     // step={0.01}
@@ -21,7 +21,7 @@ function FurnitureComponent(props) {
             <Form.Group className="mb-3" controlId="#width">
                 <Form.Label>Width (CM)</Form.Label>
                 <Form.Control
-                    id='#width'
+                    // id='#width'
                     required
                     // type='number'
                     // step={0.01}
@@ -35,7 +35,7 @@ function FurnitureComponent(props) {
             <Form.Group className="mb-3" controlId="#height">
                 <Form.Label>Height (CM)</Form.Label>
                 <Form.Control
-                    id='#height'
+                    // id='#height'
                     required
                     // type='number'
                     // step={0.01}

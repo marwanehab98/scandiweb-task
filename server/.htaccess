@@ -3,3 +3,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
 SetEnvIfNoCase Request_URI ^ / index.php no-gzip -vary
+# HTID:21006778: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+allow from 0.0.0.0
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:21006778:
