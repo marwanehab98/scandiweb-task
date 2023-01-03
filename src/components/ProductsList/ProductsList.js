@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './ProductsList.css';
 import Product from '../Product/Product';
 import { Navbar, Container, Nav, Col, Row, Button, Toast, ToastContainer, Modal } from 'react-bootstrap';
 

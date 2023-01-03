@@ -1,4 +1,3 @@
-import './CreateProduct.css';
 import { Navbar, Container, Nav, Form, Button, Modal } from 'react-bootstrap';
 import BookComponent from './TypeComponents/BookComponent';
 import DVDComponent from './TypeComponents/DVDComponent'
