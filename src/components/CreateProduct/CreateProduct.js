@@ -108,7 +108,12 @@ function CreateProduct() {
 
     return (
         <Form id='product_form' noValidate validated={validated} onSubmit={handleSubmit}>
-            <Navbar style={{"marginBottom": "20px"}} bg="dark" variant="dark">
+            <Navbar
+                style={{
+                    "marginBottom": "20px",
+                    "boxShadow": "0px 3px 3px lightGray"
+                }}
+                bg="dark" variant="dark">
                 <Container fluid>
                     <Navbar.Brand>Product Add</Navbar.Brand>
                     <Nav variant='pills' activeKey="1" className="justify-content-end">
@@ -119,7 +124,7 @@ function CreateProduct() {
                     </Nav>
                 </Container>
             </Navbar>
-            <Container fluid>
+            <Container>
                 <Form.Group className="mb-3">
                     <Form.Label>SKU</Form.Label>
                     <Form.Control

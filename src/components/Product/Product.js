@@ -43,7 +43,10 @@ function Product(props) {
                 bg={"light"}
                 key={"Card" + props.product.SKU}
                 text={"dark"}
-                style={{ width: '18rem' }}
+                style={{ 
+                    width: '18rem',
+                    boxShadow: '3px 3px 3px lightGray'
+                }}
                 className="mb-2"
             >
                 <Card.Header as="h5">

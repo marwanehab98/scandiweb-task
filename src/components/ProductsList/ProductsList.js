@@ -94,7 +94,7 @@ export default function ProductsList() {
     };
 
     const formatData = (product) => {
-        if(product.length && product.width && product.height){
+        if (product.length && product.width && product.height) {
             product.dimensions = `${product.length}x${product.width}x${product.height}`;
             delete product.length;
             delete product.width;
@@ -105,7 +105,12 @@ export default function ProductsList() {
 
     return (
         <>
-            <Navbar style={{ "marginBottom": "20px" }} bg="dark" variant="dark">
+            <Navbar
+                style={{
+                    "marginBottom": "20px",
+                    "boxShadow": "0px 3px 3px lightGray"
+                }}
+                bg="dark" variant="dark">
                 <Container fluid>
                     <Navbar.Brand>Product List</Navbar.Brand>
                     <Nav variant="pills" activeKey="1" className="justify-content-end">
@@ -114,9 +119,9 @@ export default function ProductsList() {
                     </Nav>
                 </Container>
             </Navbar>
-            <Container fluid>
+            <Container>
                 <Row
-                    className="g-2">
+                    className="g-4">
                     {products.map((_, idx) => (
                         <Col
                             xs="auto"
