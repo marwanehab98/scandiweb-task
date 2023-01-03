@@ -7,10 +7,13 @@ import Routes from "./Routes";
 function App() {
 
   return (
-    <div>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
+    <div className="App">
+      <section>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </section>
+      <footer>Scandiweb Test assignment</footer>;
     </div>
   );
 

@@ -3,11 +3,12 @@ import Card from 'react-bootstrap/Card';
 import { useState, useEffect } from 'react';
 
 function Product(props) {
+
     const [checked, setChecked] = useState(false);
     useEffect(() => {
     }, [checked]);
 
-    const cm = ['length', 'width', 'height'];
+    const cm = ['dimensions'];
     const kg = ['weight'];
     const usd = ['price'];
     const mb = ['size'];
@@ -45,15 +46,15 @@ function Product(props) {
                 style={{ width: '18rem' }}
                 className="mb-2"
             >
-                <Card.Header>
+                <Card.Header as="h5">
                     <input
+                        style={{ "marginRight": "10px", "width": "15px", "height": "15px" }}
                         id={'checkbox' + props.product.SKU}
                         type="checkbox"
-                        className='delete-checkbox'
+                        className='delete-checkbox justify-content-end'
                         onChange={(e) => handleCheckbox(e)}></input>
                     {props.product.name.replace(/^\w/, c => c.toUpperCase())}</Card.Header>
                 <Card.Body>
-                    <Card.Title>Details</Card.Title>
                     {Object.keys(props.product).map((key, _) => (
                         <Card.Text key={key}>
                             {key.replace(/^\w/, c => c.toUpperCase()) + ": " + props.product[key] + addUnit(key)}

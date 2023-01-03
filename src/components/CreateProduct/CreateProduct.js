@@ -109,84 +109,86 @@ function CreateProduct() {
 
     return (
         <Form id='product_form' noValidate validated={validated} onSubmit={handleSubmit}>
-            <Navbar bg="light" variant="light">
-                <Container>
+            <Navbar style={{"marginBottom": "20px"}} bg="dark" variant="dark">
+                <Container fluid>
                     <Navbar.Brand>Product Add</Navbar.Brand>
-                    <Nav className="me-auto">
+                    <Nav variant='pills' activeKey="1" className="justify-content-end">
                         <Button variant="primary" type="submit">
                             Save
                         </Button>
-                        <Nav.Link href='/'>Cancel</Nav.Link>
+                        <Nav.Link style={{ "marginLeft": "20px" }} eventKey="1" href='/'>Cancel</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
-            <Form.Group className="mb-3">
-                <Form.Label>SKU</Form.Label>
-                <Form.Control
-                    id='sku'
-                    required
-                    className="productDataEntry"
-                    placeholder="Enter SKU"
-                    onChange={(e) => {
-                        let tempProduct = {};
-                        Object.assign(tempProduct, product);
-                        tempProduct.SKU = e.target.value;
-                        setProduct(tempProduct);
-                    }}
-                />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                    id='name'
-                    required
-                    className="productDataEntry"
-                    placeholder="Enter Product Name"
-                    onChange={(e) => {
-                        let tempProduct = {};
-                        Object.assign(tempProduct, product);
-                        tempProduct.name = e.target.value;
-                        setProduct(tempProduct);
-                    }}
-                />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label>Price ($)</Form.Label>
-                <Form.Control
-                    id='price'
-                    required
-                    // type='number'
-                    // step={0.01}
-                    className="productDataEntry numberEntry"
-                    placeholder="Enter Product Price"
-                    onChange={(e) => {
-                        let tempProduct = {};
-                        Object.assign(tempProduct, product);
-                        tempProduct.price = e.target.value;
-                        setProduct(tempProduct);
-                    }}
-                />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label>Type Swithcer</Form.Label>
-                <Form.Select id='productType' onChange={(e) => handleTypeChange(e)}>
-                    <option>Book</option>
-                    <option>DVD</option>
-                    <option>Furniture</option>
-                </Form.Select>
-            </Form.Group>
-            {typeComponent}
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>There was a problem!</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{errorMessage}</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            <Container fluid>
+                <Form.Group className="mb-3">
+                    <Form.Label>SKU</Form.Label>
+                    <Form.Control
+                        id='sku'
+                        required
+                        className="productDataEntry"
+                        placeholder="Enter SKU"
+                        onChange={(e) => {
+                            let tempProduct = {};
+                            Object.assign(tempProduct, product);
+                            tempProduct.SKU = e.target.value;
+                            setProduct(tempProduct);
+                        }}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                        id='name'
+                        required
+                        className="productDataEntry"
+                        placeholder="Enter Product Name"
+                        onChange={(e) => {
+                            let tempProduct = {};
+                            Object.assign(tempProduct, product);
+                            tempProduct.name = e.target.value;
+                            setProduct(tempProduct);
+                        }}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Price ($)</Form.Label>
+                    <Form.Control
+                        id='price'
+                        required
+                        // type='number'
+                        // step={0.01}
+                        className="productDataEntry numberEntry"
+                        placeholder="Enter Product Price"
+                        onChange={(e) => {
+                            let tempProduct = {};
+                            Object.assign(tempProduct, product);
+                            tempProduct.price = e.target.value;
+                            setProduct(tempProduct);
+                        }}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Type Swithcer</Form.Label>
+                    <Form.Select id='productType' onChange={(e) => handleTypeChange(e)}>
+                        <option>Book</option>
+                        <option>DVD</option>
+                        <option>Furniture</option>
+                    </Form.Select>
+                </Form.Group>
+                {typeComponent}
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>There was a problem!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>{errorMessage}</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </Container>
         </Form>
     );
 }

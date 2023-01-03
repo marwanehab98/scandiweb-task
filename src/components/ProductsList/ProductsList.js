@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react';
 import './ProductsList.css';
 import Product from '../Product/Product';
-import { Navbar, Container, Nav, Col, Row, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav, Col, Row, Button, Toast, ToastContainer, Modal } from 'react-bootstrap';
 
 
 export default function ProductsList() {
+    const [show, setShow] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
+    const [showToast, setShowToast] = useState(false);
+
     const [products, setProducts] = useState([]);
     useEffect(() => {
         console.log(products);
@@ -15,8 +23,13 @@ export default function ProductsList() {
         console.log(selected);
     }, [selected]);
 
+
+    // componentDidMount() {
+    //     getProducts();
+    // }
     useEffect(() => {
         getProducts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -27,11 +40,11 @@ export default function ProductsList() {
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
-                // console.log(data);
                 setProducts(data);
             });
         } catch (error) {
-            alert(error);
+            setErrorMessage(error);
+            handleShow();
         }
     }
 
@@ -48,7 +61,7 @@ export default function ProductsList() {
         try {
             fetch(process.env.REACT_APP_DELETE_URL, {
                 method: 'post',
-                body: JSON.stringify({"SKU": SKU})
+                body: JSON.stringify({ "SKU": SKU })
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
@@ -60,10 +73,12 @@ export default function ProductsList() {
                     })
                     setSelected(tempSelected);
                     getProducts();
+                    setShowToast(true);
                 }
             });
         } catch (error) {
-            alert(error);
+            setErrorMessage(error);
+            handleShow();
         }
     }
 
@@ -79,28 +94,66 @@ export default function ProductsList() {
         setSelected(tempSelected);
     };
 
+    const formatData = (product) => {
+        if(product.length && product.width && product.height){
+            product.dimensions = `${product.length}x${product.width}x${product.height}`;
+            delete product.length;
+            delete product.width;
+            delete product.height;
+        }
+        return product;
+    }
+
     return (
         <>
-            <Navbar bg="dark" variant="dark">
-                <Container>
+            <Navbar style={{ "marginBottom": "20px" }} bg="dark" variant="dark">
+                <Container fluid>
                     <Navbar.Brand>Product List</Navbar.Brand>
-                    <Nav variant="pills" activeKey="1" className="me-auto">
-                        <Nav.Link className='ADD' style={{ "marginLeft": "20px", "marginRight": "20px" }} eventKey="1" href='/addProduct'>ADD</Nav.Link>
+                    <Nav variant="pills" activeKey="1" className="justify-content-end">
+                        <Nav.Link className='ADD' eventKey="1" href='/addProduct'>ADD</Nav.Link>
                         <Button style={{ "marginLeft": "20px" }} id='delete-product-btn' onClick={handleDelete}>MASS DELETE</Button>
                     </Nav>
                 </Container>
             </Navbar>
-            <Row
-                className="g-4">
-                {products.map((_, idx) => (
-                    <Col key={idx}>
-                        <Product
-                            product={products[idx]}
-                            isSelected={handleSelection}
-                        />
-                    </Col>
-                ))}
-            </Row>
+            <Container fluid>
+                <Row
+                    className="g-2">
+                    {products.map((_, idx) => (
+                        <Col
+                            xs="auto"
+                            sm="auto"
+                            md="auto"
+                            lg="auto"
+                            xl="auto"
+                            xxl="auto"
+                            key={idx}>
+                            <Product
+                                product={formatData(products[idx])}
+                                isSelected={handleSelection}
+                            />
+                        </Col>
+                    ))}
+                </Row>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>There was a problem!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>{errorMessage}</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                <ToastContainer className="p-3" position="bottom-center">
+                    <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
+                        <Toast.Header>
+                            <strong className="me-auto">Deleted</strong>
+                        </Toast.Header>
+                        <Toast.Body>Selected products have been deleted!</Toast.Body>
+                    </Toast>
+                </ToastContainer>
+            </Container>
         </>
     );
 }

@@ -4,20 +4,20 @@
  */
 class DbConnect
 {
-	private $server = 'localhost';
-	private $dbname = 'id20087235_scandiweb_task';
-	private $user = 'id20087235_root';
-	private $pass = 'WpG)fM7WHlk%oEOX';
+	// private $server = 'localhost';
+	// private $dbname = 'id20087235_scandiweb_task';
+	// private $user = 'id20087235_root';
+	// private $pass = 'WpG)fM7WHlk%oEOX';
 	
 // 	private $server = 'sql7.freemysqlhosting.net';
 // 	private $dbname = 'sql7587618';
 // 	private $user = 'sql7587618';
 // 	private $pass = '2BbPJcDg3X';
 
-// 	private $server = 'localhost';
-// 	private $dbname = 'scandiweb_task';
-// 	private $user = 'root';
-// 	private $pass = '';
+	private $server = 'localhost';
+	private $dbname = 'scandiweb_task';
+	private $user = 'root';
+	private $pass = '';
 
 
 

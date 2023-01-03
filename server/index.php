@@ -21,13 +21,13 @@ switch ($method) {
         break;
     case "POST":
         $path = explode('/', $_SERVER['REQUEST_URI']);
-        if ($path[1] == "addproduct") {
+        if ($path[4] == "addproduct") {
             $product = json_decode(file_get_contents('php://input'));
             $type = $product->type;
             $class = $type;
             $product_object = new $class($product, true);
             $product_object->addProduct($conn, $type);
-        } else if ($path[1] == "deleteproduct") {
+        } else if ($path[4] == "deleteproduct") {
             $body = json_decode(file_get_contents('php://input'));
             $sku = $body->SKU;
             $products_list = new ProductList();
