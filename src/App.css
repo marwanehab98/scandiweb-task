@@ -8,6 +8,6 @@ footer {
   border-color: lightgray;
   padding: 8px;
   text-align: center;
-  box-shadow: 0px -4px 3px lightGray
-
+  box-shadow: 0px -4px 3px lightGray;
+  margin-top: 20px;
 }

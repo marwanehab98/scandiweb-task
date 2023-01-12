@@ -8,24 +8,20 @@ function Product(props) {
     useEffect(() => {
     }, [checked]);
 
-    const cm = ['dimensions'];
-    const kg = ['weight'];
-    const usd = ['price'];
-    const mb = ['size'];
-
-    const addUnit = (key) => {
-        if (cm.includes(key)) {
-            return "CM"
-        } else if (kg.includes(key)) {
-            return "KG"
-        } else if (usd.includes(key)) {
-            return "$"
-        }
-        else if (mb.includes(key)) {
-            return "MB"
-        }
-        else {
-            return ""
+    const handleFormat = (value, key) => {
+        switch (key) {
+            case 'dimensions':
+                return value + "CM";
+            case 'weight':
+                return value + "KG";
+            case 'price':
+                return value + "$"
+            case 'size':
+                return value + "MB"
+            case 'type':
+                return value.replace(/^\w/, c => c.toUpperCase())
+            default:
+                return ""
         }
     }
 
@@ -60,7 +56,7 @@ function Product(props) {
                 <Card.Body>
                     {Object.keys(props.product).map((key, _) => (
                         <Card.Text key={key}>
-                            {key.replace(/^\w/, c => c.toUpperCase()) + ": " + props.product[key] + addUnit(key)}
+                            {key.replace(/^\w/, c => c.toUpperCase()) + ": " + handleFormat(props.product[key], key)}
                         </Card.Text>
                     ))}
                 </Card.Body>

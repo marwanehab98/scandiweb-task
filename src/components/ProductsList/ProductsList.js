@@ -23,9 +23,6 @@ export default function ProductsList() {
     }, [selected]);
 
 
-    // componentDidMount() {
-    //     getProducts();
-    // }
     useEffect(() => {
         getProducts();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -149,7 +146,7 @@ export default function ProductsList() {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-                <ToastContainer className="p-3" position="bottom-center">
+                <ToastContainer style={{"marginBottom" : "100px"}} className="p-3" position="bottom-center">
                     <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
                         <Toast.Header>
                             <strong className="me-auto">Deleted</strong>

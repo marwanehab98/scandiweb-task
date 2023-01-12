@@ -60,7 +60,7 @@ function CreateProduct() {
             });
             if (valid) {
                 try {
-                    // console.log(product)
+                    console.log(JSON.stringify(product))
                     fetch(process.env.REACT_APP_ADD_URL, {
                         method: 'post',
                         body: JSON.stringify(product)
