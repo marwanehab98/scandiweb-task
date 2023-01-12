@@ -60,14 +60,14 @@ function CreateProduct() {
             });
             if (valid) {
                 try {
-                    console.log(JSON.stringify(product))
+                    // console.log(JSON.stringify(product))
                     fetch(process.env.REACT_APP_ADD_URL, {
                         method: 'post',
                         body: JSON.stringify(product)
                     }).then(function (response) {
                         return response.json();
                     }).then(function (data) {
-                        console.log(data);
+                        // console.log(data);
                         if (data.status === '200') {
                             navigate('/');
                         }

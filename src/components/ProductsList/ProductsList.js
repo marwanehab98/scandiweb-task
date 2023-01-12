@@ -14,12 +14,12 @@ export default function ProductsList() {
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        console.log(products);
+        // console.log(products);
     }, [products]);
 
     const [selected, setSelected] = useState([]);
     useEffect(() => {
-        console.log(selected);
+        // console.log(selected);
     }, [selected]);
 
 
@@ -59,9 +59,9 @@ export default function ProductsList() {
                 method: 'post',
                 body: JSON.stringify({ "SKU": SKU })
             }).then(function (response) {
-                return response.json();
+                // console.log(response);
             }).then(function (data) {
-                console.log(data);
+                // console.log(data);
                 if (data.status === '200') {
                     tempSelected = tempSelected.filter(product => {
                         // eslint-disable-next-line eqeqeq
@@ -146,7 +146,7 @@ export default function ProductsList() {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-                <ToastContainer style={{"marginBottom" : "100px"}} className="p-3" position="bottom-center">
+                <ToastContainer style={{ "marginBottom": "100px" }} className="p-3" position="bottom-center">
                     <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
                         <Toast.Header>
                             <strong className="me-auto">Deleted</strong>
