@@ -59,7 +59,7 @@ export default function ProductsList() {
                 method: 'post',
                 body: JSON.stringify({ "SKU": SKU })
             }).then(function (response) {
-                // console.log(response);
+                return response.json();
             }).then(function (data) {
                 // console.log(data);
                 if (data.status === '200') {
