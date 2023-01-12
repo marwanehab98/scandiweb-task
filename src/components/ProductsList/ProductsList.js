@@ -61,7 +61,6 @@ export default function ProductsList() {
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
-                console.log(data);
                 if (data.status === '200') {
                     tempSelected = tempSelected.filter(product => {
                         // eslint-disable-next-line eqeqeq
