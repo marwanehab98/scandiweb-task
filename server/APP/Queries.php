@@ -92,5 +92,4 @@ class Queries
         return $sql;
     }
 }
-
 ?>
