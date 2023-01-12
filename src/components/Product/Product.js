@@ -19,9 +19,10 @@ function Product(props) {
             case 'size':
                 return value + "MB"
             case 'type':
-                return value.replace(/^\w/, c => c.toUpperCase())
+                if (key === 'dvd') return value.toUpperCase()
+                else return value.replace(/^\w/, c => c.toUpperCase())
             default:
-                return ""
+                return value
         }
     }
 

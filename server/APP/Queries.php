@@ -83,12 +83,12 @@ class Queries
     }
     public function addDVD()
     {
-        $sql = "INSERT INTO books(SKU, size) VALUES(:SKU, :size)";
+        $sql = "INSERT INTO dvds(SKU, size) VALUES(:SKU, :size)";
         return $sql;
     }
     public function addFurniture()
     {
-        $sql = "INSERT INTO books(SKU, length, width, height) VALUES(:SKU, :length, :width, :height)";
+        $sql = "INSERT INTO furniture(SKU, length, width, height) VALUES(:SKU, :length, :width, :height)";
         return $sql;
     }
 }
