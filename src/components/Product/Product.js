@@ -1,5 +1,4 @@
 import Card from 'react-bootstrap/Card';
-// import { ToggleButton } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
 function Product(props) {
@@ -19,7 +18,7 @@ function Product(props) {
             case 'size':
                 return value + "MB"
             case 'type':
-                if (key === 'dvd') return value.toUpperCase()
+                if (value === 'dvd') return value.toUpperCase()
                 else return value.replace(/^\w/, c => c.toUpperCase())
             default:
                 return value
